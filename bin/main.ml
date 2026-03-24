@@ -9,7 +9,11 @@ let print_nums (arr : int list) =
 let () =
   let arr = [ 5; 3; 8; 2; 1; 9; 4; 6; 7 ] in
   (*let arr = [| 5; 3; 8; 2; 1; 9; 4; 6; 7 |] in*)
-  Printf.printf "Bubblesort: ";
+  Printf.printf "Bubble sort: ";
   let sorted = Sorting_algos.Bubble.bubble_sort arr in
   (*print_array sorted*)
+  print_nums sorted;
+
+  Printf.printf "Selection sort: ";
+  let sorted = Sorting_algos.Selection.selection_sort arr in
   print_nums sorted
