@@ -1,0 +1,15 @@
+#+TITLE: Sorting Algorithms in OCaml
+#+AUTHOR: Brad White
+#+DATE: 2026-03-23
+
+|-----------+-------------+------------|
+| Algo name | Description | Complexity |
+|-----------+-------------+------------|
+| Bubble    |             | O(n^2)     |
+| Selection |             | O(n^2)     |
+| Insertion |             | O(n^2)     |
+| Merge     |             | O(n)       |
+| Quick     |             | O(n log n) |
+| Heap      |             | O(n log n) |
+|-----------+-------------+------------|
+

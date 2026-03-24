@@ -1,0 +1,28 @@
+#+TITLE: Sorting Algorithms — Documentation Index
+#+AUTHOR: Brad White
+
+* Algorithm Guides
+
+Each guide explains how the algorithm works, walks through an example, and
+gives hints for implementing it in OCaml — without giving away the solution.
+
+| File                   | Algorithm      | Complexity |
+|------------------------+----------------+------------|
+| [[file:bubble_sort.org]]    | Bubble Sort    | O(n²)      |
+| [[file:selection_sort.org]] | Selection Sort | O(n²)      |
+| [[file:insertion_sort.org]] | Insertion Sort | O(n²)      |
+| [[file:merge_sort.org]]     | Merge Sort     | O(n log n) |
+| [[file:quick_sort.org]]     | Quick Sort     | O(n log n) |
+| [[file:heap_sort.org]]      | Heap Sort      | O(n log n) |
+
+* Testing
+
+Run all tests with:
+
+#+BEGIN_SRC sh
+dune test
+#+END_SRC
+
+The test suite in =test/test_sorting_algos.ml= verifies each algorithm
+against multiple cases: empty arrays, single elements, already sorted,
+reverse sorted, duplicates, and random input.

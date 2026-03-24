@@ -1,0 +1,86 @@
+#+TITLE: Quick Sort
+#+AUTHOR: Brad White
+
+* Overview
+
+Quick sort is a divide-and-conquer algorithm that works by selecting a
+"pivot" element and partitioning the array so that all elements less than
+the pivot come before it, and all elements greater come after it. The
+sub-arrays are then sorted recursively.
+
+* How It Works
+
+1. *Choose a pivot*: Pick an element from the array (common choices:
+   first, last, middle, or random element).
+2. *Partition*: Rearrange the array so that:
+   - All elements less than the pivot are to its left.
+   - All elements greater than the pivot are to its right.
+   - The pivot is now in its final sorted position.
+3. *Recurse*: Recursively apply quick sort to the left sub-array and the
+   right sub-array.
+4. *Base case*: An array of length 0 or 1 is already sorted.
+
+** The Partition Step (Lomuto scheme)
+
+1. Choose the last element as the pivot.
+2. Maintain an index =i= pointing to the position where the next element
+   smaller than the pivot should go (starts before the first element).
+3. Scan from left to right. Whenever an element ≤ pivot is found, increment
+   =i= and swap the element with the element at =i=.
+4. After the scan, swap the pivot (last element) with the element at =i+1=.
+5. Return =i+1= as the pivot's final index.
+
+* Walkthrough
+
+Given the array: =[10, 7, 8, 9, 1, 5]= with pivot = 5 (last element)
+
+** Partition
+| Step | Element | ≤ Pivot? | Action         | Array State          |
+|------+---------+----------+----------------+----------------------|
+|    1 |      10 | No       | —              | [10, 7, 8, 9, 1, 5] |
+|    2 |       7 | No       | —              | [10, 7, 8, 9, 1, 5] |
+|    3 |       8 | No       | —              | [10, 7, 8, 9, 1, 5] |
+|    4 |       9 | No       | —              | [10, 7, 8, 9, 1, 5] |
+|    5 |       1 | Yes      | swap with pos 0 | [1, 7, 8, 9, 10, 5] |
+|    6 | (pivot) | —        | swap into pos 1 | [1, *5*, 8, 9, 10, 7] |
+
+Now =5= is at index 1. Recurse on =[1]= (left) and =[8, 9, 10, 7]= (right).
+
+* Complexity
+
+| Case    | Time       | Space    |
+|---------+------------+----------|
+| Best    | O(n log n) | O(log n) |
+| Average | O(n log n) | O(log n) |
+| Worst   | O(n²)      | O(n)     |
+
+- *Best/Average*: Pivot divides the array roughly in half.
+- *Worst* O(n²): Pivot is always the smallest or largest element (e.g.,
+  already sorted array with first/last element as pivot). This results in
+  maximally unbalanced partitions.
+
+* Key Properties
+
+- *Not stable*: The partitioning swaps can change relative order of equal
+  elements.
+- *In-place*: Requires only O(log n) stack space for recursion.
+- *Not adaptive*: Performance doesn't improve on nearly-sorted input
+  (unless pivot selection is smart).
+- In practice, quick sort is often *faster than merge sort* due to better
+  cache locality and lower constant factors.
+
+* Hints for Implementation in OCaml
+
+- Write a =partition= helper that takes the array, a low index, and a high
+  index, and returns the pivot's final index after rearranging.
+- The main =quick_sort= function recurses on the sub-arrays defined by the
+  partition index.
+- Consider working on a copy of the input array so the original is not
+  modified.
+- A functional approach using lists (filter into less-than / greater-than
+  sublists) is also possible but less efficient.
+
+* Your Task
+
+Implement =quick_sort= in =lib/quick.ml=. The function should take an
+integer array and return a sorted copy.

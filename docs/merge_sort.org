@@ -1,0 +1,86 @@
+#+TITLE: Merge Sort
+#+AUTHOR: Brad White
+
+* Overview
+
+Merge sort is a divide-and-conquer algorithm. It recursively splits the
+array in half, sorts each half, and then merges the two sorted halves back
+together. It is one of the most efficient general-purpose sorting
+algorithms.
+
+* How It Works
+
+1. *Divide*: Split the array into two halves.
+2. *Conquer*: Recursively sort each half.
+3. *Combine*: Merge the two sorted halves into a single sorted array by
+   comparing elements from each half and placing the smaller one first.
+
+** The Merge Step (in detail)
+
+Given two sorted sub-arrays, the merge procedure:
+1. Maintain a pointer (index) into each sub-array, both starting at 0.
+2. Compare the elements at the two pointers.
+3. Copy the smaller element into the result array and advance that pointer.
+4. When one sub-array is exhausted, copy the remaining elements from the
+   other.
+
+* Walkthrough
+
+Given the array: =[38, 27, 43, 3, 9, 82, 10]=
+
+#+BEGIN_EXAMPLE
+                  [38, 27, 43, 3, 9, 82, 10]
+                 /                           \
+         [38, 27, 43, 3]              [9, 82, 10]
+         /             \              /           \
+     [38, 27]      [43, 3]       [9, 82]        [10]
+     /     \       /     \       /     \           |
+   [38]   [27]  [43]    [3]   [9]   [82]        [10]
+     \     /       \     /       \     /           |
+     [27, 38]      [3, 43]       [9, 82]        [10]
+         \             /              \           /
+         [3, 27, 38, 43]              [9, 10, 82]
+                 \                           /
+              [3, 9, 10, 27, 38, 43, 82]
+#+END_EXAMPLE
+
+* Complexity
+
+| Case    | Time       | Space |
+|---------+------------+-------|
+| Best    | O(n log n) | O(n)  |
+| Average | O(n log n) | O(n)  |
+| Worst   | O(n log n) | O(n)  |
+
+The time complexity is always O(n log n) because the array is always split
+in half (log n levels) and merging takes O(n) at each level.
+
+*Note*: The README lists merge sort as O(n), but its true complexity is
+O(n log n).
+
+* Key Properties
+
+- *Stable*: Equal elements retain their relative order (when the merge
+  step uses ≤ rather than <).
+- *Not in-place*: Requires O(n) additional space for the temporary arrays
+  used during merging.
+- *Predictable*: Performance does not depend on input order — always
+  O(n log n).
+- *Parallelizable*: The two recursive calls are independent and can run in
+  parallel.
+
+* Hints for Implementation in OCaml
+
+- OCaml's pattern matching on lists makes a list-based merge sort very
+  natural. However, since this project uses arrays, consider:
+  - Using =Array.sub= to split the array.
+  - Writing a helper =merge= function that takes two sorted arrays and
+    returns a merged sorted array.
+- The recursive structure maps directly to the divide/conquer/combine
+  pattern.
+- Base case: an array of length 0 or 1 is already sorted.
+
+* Your Task
+
+Implement =merge_sort= in =lib/merge.ml=. The function should take an
+integer array and return a sorted copy.

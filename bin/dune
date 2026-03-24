@@ -1,0 +1,4 @@
+(executable
+ (public_name sorting_algos)
+ (name main)
+ (libraries sorting_algos))

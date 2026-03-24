@@ -1,0 +1,61 @@
+#+TITLE: Insertion Sort
+#+AUTHOR: Brad White
+
+* Overview
+
+Insertion sort builds the sorted array one element at a time. It works the
+way you might sort a hand of playing cards — pick up each card and slide it
+into its correct position among the cards you've already sorted.
+
+* How It Works
+
+1. Start with the second element (index 1). The first element by itself is
+   already "sorted."
+2. Take the current element (the "key") and compare it with elements to
+   its left.
+3. Shift each left-side element that is greater than the key one position
+   to the right.
+4. Insert the key into the gap created.
+5. Advance to the next element and repeat until the end of the array.
+
+* Walkthrough
+
+Given the array: =[7, 4, 5, 2]=
+
+| Step | Key | Comparison & Shifts          | Array State       |
+|------+-----+------------------------------+-------------------|
+|    1 |   4 | 7 > 4 → shift 7 right       | [*4*, 7, 5, 2]    |
+|    2 |   5 | 7 > 5 → shift; 4 < 5 → stop | [4, *5*, 7, 2]    |
+|    3 |   2 | 7 > 2, 5 > 2, 4 > 2 → shift | [*2*, 4, 5, 7]    |
+
+* Complexity
+
+| Case    | Time   | Space |
+|---------+--------+-------|
+| Best    | O(n)   | O(1)  |
+| Average | O(n²)  | O(1)  |
+| Worst   | O(n²)  | O(1)  |
+
+- *Best case* O(n) occurs when the array is already sorted — each element
+  only needs one comparison.
+- *Worst case* O(n²) occurs when the array is in reverse order.
+
+* Key Properties
+
+- *Stable*: Equal elements maintain their relative order.
+- *In-place*: Requires only O(1) extra memory.
+- *Adaptive*: Runs in nearly O(n) time on nearly-sorted input.
+- *Online*: Can sort elements as they are received.
+
+* Hints for Implementation in OCaml
+
+- Use a loop starting from index 1 to the end of the array.
+- Store the current element in a temporary variable (the key).
+- Use a while-style loop (or recursion) to shift elements rightward until
+  you find the correct insertion point.
+- Place the key at the gap.
+
+* Your Task
+
+Implement =insertion_sort= in =lib/insertion.ml=. The function should take
+an integer array and return a sorted copy.
