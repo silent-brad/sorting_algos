@@ -16,4 +16,8 @@ let () =
 
   Printf.printf "Selection sort: ";
   let sorted = Sorting_algos.Selection.selection_sort arr in
+  print_nums sorted;
+
+  Printf.printf "Insertion sort: ";
+  let sorted = Sorting_algos.Insertion.insertion_sort arr in
   print_nums sorted
