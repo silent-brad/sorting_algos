@@ -20,4 +20,8 @@ let () =
 
   Printf.printf "Insertion sort: ";
   let sorted = Sorting_algos.Insertion.insertion_sort arr in
+  print_nums sorted;
+
+  Printf.printf "Merge sort: ";
+  let sorted = Sorting_algos.Merge.merge_sort arr in
   print_nums sorted

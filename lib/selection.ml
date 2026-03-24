@@ -18,5 +18,9 @@ let rec selection_sort = function
             if x < min_of_rest then x else min_of_rest
       in
       let min = find_min xs in
-      let sorted = List.filter (fun x -> x <> min) (x :: xs) in
+      let rec remove_first y = function
+        | [] -> []
+        | hd :: tl -> if hd = y then tl else hd :: remove_first y tl
+      in
+      let sorted = remove_first min (x :: xs) in
       min :: selection_sort sorted
