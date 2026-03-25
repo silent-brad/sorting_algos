@@ -18,4 +18,8 @@ let () =
 
   Printf.printf "Merge sort: ";
   let sorted = Sorting_algos.Merge.merge_sort lst in
+  print_nums sorted;
+
+  Printf.printf "Quick sort: ";
+  let sorted = Sorting_algos.Quick.quick_sort lst in
   print_nums sorted
