@@ -14,7 +14,8 @@
 let rec bubble_sort lst =
   let sorted = function
     | hd1 :: hd2 :: tl when hd1 > hd2 -> hd2 :: bubble_sort (hd1 :: tl)
-    | hd1 :: tl -> hd1 :: bubble_sort tl
-    | tl -> tl
+    | hd :: tl -> hd :: bubble_sort tl
+    | x -> x
   in
-  if lst = sorted lst then lst else bubble_sort (sorted lst)
+  let sorted_lst = sorted lst in
+  if lst = sorted_lst then lst else bubble_sort sorted_lst

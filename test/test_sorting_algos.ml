@@ -43,11 +43,11 @@ let () =
 
   Printf.printf "Insertion Sort:\n";
   run_tests "insertion_sort" Sorting_algos.Insertion.insertion_sort;
-  print_newline ()
+  print_newline ();
 
-(* Printf.printf "Merge Sort:\n";
-     run_tests "merge_sort" Sorting_algos.Merge.merge_sort;
-     print_newline () *)
+  Printf.printf "Merge Sort:\n";
+  run_tests "merge_sort" Sorting_algos.Merge.merge_sort;
+  print_newline ()
 
 (* Printf.printf "Quick Sort:\n";
      run_tests "quick_sort" Sorting_algos.Quick.quick_sort;
