@@ -51,8 +51,8 @@ let () =
 
   Printf.printf "Quick Sort:\n";
   run_tests "quick_sort" Sorting_algos.Quick.quick_sort;
-  print_newline ()
+  print_newline ();
 
-(* Printf.printf "Heap Sort:\n";
-     run_tests "heap_sort" Sorting_algos.Heap.heap_sort;
-     print_newline () *)
+  Printf.printf "Heap Sort:\n";
+  run_tests "heap_sort" Sorting_algos.Heap.heap_sort;
+  print_newline ()

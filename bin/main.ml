@@ -22,4 +22,8 @@ let () =
 
   Printf.printf "Quick sort: ";
   let sorted = Sorting_algos.Quick.quick_sort lst in
+  print_nums sorted;
+
+  Printf.printf "Heap sort: ";
+  let sorted = Sorting_algos.Heap.heap_sort lst in
   print_nums sorted
